@@ -207,6 +207,11 @@
   :init (projectile-mode +1)
   :config (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
+(use-package counsel-projectile
+ :after projectile
+ :config
+ (counsel-projectile-mode 1))
+
 ;;(which-key-mode)
 
 ;;(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
@@ -219,7 +224,12 @@
   ;;(define-key winum-keymap (kbd "M-0") #'treemacs-select-window)
   )
 
-(use-package magit)
+(use-package magit
+  :commands (magit-status magit-get-current-branch)
+  :custom
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+
+(use-package forge)
 
 (conda-env-initialize-eshell)
 (conda-env-initialize-interactive-shells)

@@ -9,3 +9,17 @@
 
 # Undo-tree save-files
 *.~undo-tree
+
+history
+*.last
+places
+*.eld
+session*
+
+auto_save_list/
+backups/
+eln-cache/
+elpa/
+eshell/
+url/
+
