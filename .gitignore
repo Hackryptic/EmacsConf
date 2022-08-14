@@ -15,6 +15,9 @@ history
 places
 *.eld
 session*
+tramp
+*.sqlite
+
 
 auto_save_list/
 backups/
@@ -22,4 +25,5 @@ eln-cache/
 elpa/
 eshell/
 url/
-
+.cache/
+transient/

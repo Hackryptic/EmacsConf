@@ -36,8 +36,9 @@
 
 
 ;; Set default font
-(set-face-attribute 'default nil
-                    :family "SourceCodePro-Medium"
+(set-face-attribute 'default t
+                    :font "SourceCodePro SemiBold"
+                    ;;:family "SourceCodePro-Bold"
                     :height 140
                     :weight 'normal
                     :width 'normal)
