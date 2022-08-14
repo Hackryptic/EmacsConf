@@ -44,6 +44,7 @@
                     :width 'normal)
 
 
+
 ;; Disable line numbers for some modes
 (dolist (mode '(org-mode-hook
                 term-mode-hook
