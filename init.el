@@ -36,11 +36,7 @@
 
 
 ;; Set default font
-(set-face-attribute 'default nil
-                    :family "SourceCodePro-Medium"
-                    :height 140
-                    :weight 'normal
-                    :width 'normal)
+
 
 ;; Disable line numbers for some modes
 (dolist (mode '(org-mode-hook
@@ -68,6 +64,15 @@
 (use-package doom-themes
   :init (load-theme 'doom-gruvbox))
 
+(set-face-attribute 'default nil
+                    ;;:font "NotoSansKR Bold"
+                    :font "SourceCodePro SemiBold"                   
+;;                    :family "SourceCodePro-Bold"
+                    :height 150
+                    :weight 'normal
+                    :width 'normal)
+
+(set-fontset-font "fontset-default" 'hangul "NotoSansKR Bold")
 
  (custom-set-faces
   ;;`(mode-line ((t (:background ,(doom-color 'dark-violet)))))
@@ -209,8 +214,7 @@
 
 (use-package counsel-projectile
  :after projectile
- :config
- (counsel-projectile-mode 1))
+ :config (counsel-projectile-mode 1))
 
 ;;(which-key-mode)
 
@@ -239,7 +243,12 @@
 
 (eshell-git-prompt-use-theme 'multiline2)
 
+(use-package org-superstar
+  :hook (org-mode . org-superstar-mode)
+  :config (setq org-superstar-special-todo-items t))
 
+(setq tramp-default-method "ssh")
+(setq tramp-verbose 10)
 
 
 (setq shell-file-name "bash")
@@ -249,8 +258,8 @@
 
 ;; (push "/home/hackryptic/anaconda3/bin" exec-path)
 
-(load "~/.emacs.d/exwm-desktop.el")
-;; (load "~/.emacs.d/non-exwm.el")
+;;(load "~/.emacs.d/exwm-desktop.el")
+ (load "~/.emacs.d/non-exwm.el")
 
 
 
