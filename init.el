@@ -34,17 +34,6 @@
 ;;(message "hi")
 (load custom-file)
 
-
-;; Set default font
-(set-face-attribute 'default t
-                    :font "SourceCodePro SemiBold"
-                    ;;:family "SourceCodePro-Bold"
-                    :height 140
-                    :weight 'normal
-                    :width 'normal)
-
-
-
 ;; Disable line numbers for some modes
 (dolist (mode '(org-mode-hook
                 term-mode-hook
