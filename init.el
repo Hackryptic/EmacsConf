@@ -243,6 +243,15 @@
   :hook (org-mode . org-superstar-mode)
   :config (setq org-superstar-special-todo-items t))
 
+(use-package ov)
+
+
+
+
+(with-eval-after-load "org" (load "~/.emacs.d/preview-latex.el"))
+
+
+
 (setq tramp-default-method "ssh")
 (setq tramp-verbose 10)
 
