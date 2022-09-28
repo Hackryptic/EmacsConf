@@ -86,7 +86,7 @@
 (use-package python-mode
   :ensure t
   :custom
-  (python-shell-interpreter "/home/hackryptic/anaconda3/envs/contest/bin/python"
+  (python-shell-interpreter ;;"/home/hackryptic/anaconda3/envs/contest/bin/python"
 ))
 
 (use-package exec-path-from-shell
@@ -126,10 +126,11 @@
 
 (defun my/python-mode-hook ()
   ;;(company-mode +1)
-  (print "called")
-  (print "found")
+  ;;(print "called")
+  ;;(print "found")
   (add-to-list 'company-backends 'company-jedi)
-  (print "added"))
+  ;;(print "added")
+  )
 
 (add-hook 'python-mode-hook 'my/python-mode-hook)
 (delete 'company-jedi company-backends)
@@ -155,7 +156,6 @@
   :ensure t
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
-
 
 
 
@@ -224,6 +224,8 @@
   ;;(define-key winum-keymap (kbd "M-0") #'treemacs-select-window)
   )
 
+(use-package treemacs-projectile)
+
 (use-package magit
   :commands (magit-status magit-get-current-branch)
   :custom
@@ -245,12 +247,9 @@
 
 (use-package ov)
 
-
-
+(use-package php-mode)
 
 (with-eval-after-load "org" (load "~/.emacs.d/preview-latex.el"))
-
-
 
 (setq tramp-default-method "ssh")
 (setq tramp-verbose 10)
@@ -260,6 +259,8 @@
 (setq shell-command-switch "-c")
 
 (add-to-list 'eglot-server-programs '(python-mode . ("jedi-language-server")))
+
+(global-visual-line-mode 1)
 
 ;; (push "/home/hackryptic/anaconda3/bin" exec-path)
 
