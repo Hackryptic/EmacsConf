@@ -17,6 +17,8 @@ places
 session*
 tramp
 *.sqlite
+.lsp-session*
+
 
 
 auto_save_list/
@@ -27,4 +29,4 @@ eshell/
 url/
 .cache/
 transient/
-
+tutorial/

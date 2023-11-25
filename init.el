@@ -60,15 +60,25 @@
 (use-package doom-themes
   :init (load-theme 'doom-gruvbox))
 
-(set-face-attribute 'default nil
-                    ;;:font "NotoSansKR Bold"
-                    :font "SourceCodePro SemiBold"                   
-;;                    :family "SourceCodePro-Bold"
-                    :height 150
-                    :weight 'normal
-                    :width 'normal)
 
-(set-fontset-font "fontset-default" 'hangul "NotoSansKR Bold")
+(defun set-my-attribute (frame)
+  (set-face-attribute 'default frame                 
+                      :font "HackNerdFont Bold"
+                      :height '150
+                      :weight 'normal
+                      :width 'normal
+                  )
+  (set-fontset-font "fontset-default" 'hangul "NotoSansKR Bold")
+)
+
+(set-my-attribute nil)
+
+;; (add-hook 'after-make-frame-functions 'set-my-attribute)
+
+
+
+;;(set-frame-font "HackNerdFont 12" nil t)
+
 
  (custom-set-faces
   ;;`(mode-line ((t (:background ,(doom-color 'dark-violet)))))
@@ -95,16 +105,53 @@
 (use-package conda
   :ensure t)
 
-(use-package eglot
+;; (use-package eglot
+;;   :ensure t)
+
+
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :init
+  (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
+  :config
+  (lsp-enable-which-key-integration t)
+  :hook (lsp-mode . efs/lsp-mode-setup)
+  )
+
+
+(defun efs/lsp-mode-setup ()
+  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+  (lsp-headerline-breadcrumb-mode))
+
+ 
+
+(use-package lsp-jedi
   :ensure t)
+
+(setq jedi:server-command 
+      '("/home/hackryptic/anaconda3/envs/contest/bin/python"
+        "-W" "ignore"
+      "/home/hackryptic/.emacs.d/elpa/jedi-core-20210503.1315/jediepcserver.py"))
+
+(setq lsp-jedi-workspace-extra-paths
+  (vconcat lsp-jedi-workspace-extra-paths
+           ["/home/hackryptic/anaconda3/envs/contest/lib/python3.11/site-packages"]))
+
+(use-package ccls)
+
+(setq ccls-executable "/usr/bin/ccls")
+
+
+
+
 
 (use-package eldoc-box)
 
-(add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-mode t)
+;; (add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-mode t)
 
 (use-package company
   
-  ;;:after eglot--managed-mode
+  ;;:after lsp-mode
   :hook (prog-mode . company-mode)
   :bind (:map company-active-map
          ("<tab>" . company-complete-selection))
@@ -119,8 +166,9 @@
   (company-quickhelp-delay 0.1))
 
 (use-package company-box
-  ;;:after company-mode                   
-  :hook (company-mode . company-box-mode))
+   ;;:after company-mode                   
+   :hook (company-mode . company-box-mode))
+
 
 (use-package company-jedi)
 
@@ -249,6 +297,21 @@
 
 (use-package php-mode)
 
+(use-package evil-nerd-commenter
+  :bind ("M-/" . evilnc-comment-or-uncomment-lines))
+
+
+
+
+
+
+
+
+;; (set-fontset-font "fontset-default" 'hangul "NotoSansKR Bold")
+
+
+
+
 (with-eval-after-load "org" (load "~/.emacs.d/preview-latex.el"))
 
 (setq tramp-default-method "ssh")
@@ -258,14 +321,15 @@
 (setq shell-file-name "bash")
 (setq shell-command-switch "-c")
 
-(add-to-list 'eglot-server-programs '(python-mode . ("jedi-language-server")))
+;; (add-to-list 'eglot-server-programs '(python-mode .  ("jedi-language-server")))
 
 (global-visual-line-mode 1)
 
 ;; (push "/home/hackryptic/anaconda3/bin" exec-path)
 
-;;(load "~/.emacs.d/exwm-desktop.el")
- (load "~/.emacs.d/non-exwm.el")
-
+(global-set-key (kbd "s-<left>")  'windmove-left)
+(global-set-key (kbd "s-<right>") 'windmove-right)
+(global-set-key (kbd "s-<up>")    'windmove-up)
+(global-set-key (kbd "s-<down>")  'windmove-down)
 
 

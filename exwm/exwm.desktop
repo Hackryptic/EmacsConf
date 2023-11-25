@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=EXWM
-Comment=Emacs Window Manager
-Exec=bash /home/hackryptic/.emacs.d/exwm/start-exwm.sh
-TryExec=bash
-Type=Application
-X-LightDM-DesktopName=exwm
-DesktopNames=exwm

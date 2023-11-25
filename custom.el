@@ -13,7 +13,7 @@
                  ("begin" "$1" "$" "$$" "\\(" "\\[")
                  :justify center))
  '(package-selected-packages
-   '(treemacs-projectile php-mode ov org-superstar org-bullets ivy forge counsel-projectile magit treemacs projectile company-jedi company-quickhelp company-box company company-quckhelp eldoc-box doom-themes helpful counsel doom-modeline command-log-mode ivy-rich diminish which-key rainbow-delimiters eglot conda exec-path-from-shell python-mode use-package modus-themes exwm eshell-git-prompt better-defaults)))
+   '(ccls lsp-jedi lsp-mode evil-nerd-commenter treemacs-projectile php-mode ov org-superstar org-bullets ivy forge counsel-projectile magit treemacs projectile company-jedi company-quickhelp company-box company company-quckhelp eldoc-box doom-themes helpful counsel doom-modeline command-log-mode ivy-rich diminish which-key rainbow-delimiters eglot conda exec-path-from-shell python-mode use-package modus-themes exwm eshell-git-prompt better-defaults)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
