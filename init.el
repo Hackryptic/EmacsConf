@@ -27,8 +27,7 @@
 
 ;;(message "hallo")
 ;; ":ensure t" is nececsary for installing package automatically
-(use-package better-defaults
-  :ensure t)
+(use-package better-defaults)
 ;;(setq
 ;; custom-file (expand-file-name "custom.el" user-emacs-directory))
 ;;(message "hi")
@@ -85,25 +84,20 @@
   `(font-lock-comment-face ((t (:foreground ,(doom-color 'medium-sea-green))))))
 
 
-(use-package diminish
-  :ensure t)
+(use-package diminish)
 
 
 
-(use-package eshell-git-prompt
-  :ensure t)
+(use-package eshell-git-prompt)
 
 (use-package python-mode
-  :ensure t
   :custom
   (python-shell-interpreter ;;"/home/hackryptic/anaconda3/envs/contest/bin/python"
 ))
 
-(use-package exec-path-from-shell
-  :ensure t)
+(use-package exec-path-from-shell)
 
-(use-package conda
-  :ensure t)
+(use-package conda)
 
 ;; (use-package eglot
 ;;   :ensure t)
@@ -125,8 +119,7 @@
 
  
 
-(use-package lsp-jedi
-  :ensure t)
+(use-package lsp-jedi)
 
 (setq jedi:server-command 
       '("/home/hackryptic/anaconda3/envs/contest/bin/python"
@@ -136,6 +129,16 @@
 (setq lsp-jedi-workspace-extra-paths
   (vconcat lsp-jedi-workspace-extra-paths
            ["/home/hackryptic/anaconda3/envs/contest/lib/python3.11/site-packages"]))
+
+(use-package lsp-ui)
+
+(setq lsp-ui-sideline-enable nil)
+(setq lsp-ui-sideline-show-hover nil)
+
+(use-package lsp-treemacs
+  :after lsp)
+
+
 
 (use-package ccls)
 
@@ -187,12 +190,10 @@
 
 
 (use-package rainbow-delimiters
-  :ensure t
   :hook (prog-mode . rainbow-delimiters-mode))
 
 
 (use-package which-key
-  :ensure t
   :init (which-key-mode)
   :diminish which-key-mode
   :config
@@ -201,7 +202,6 @@
 
 
 (use-package doom-modeline
-  :ensure t
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
 
@@ -226,7 +226,6 @@
   (ivy-mode 1))
 
 (use-package ivy-rich
-  :ensure t
   :init
   (ivy-rich-mode 1))
 
@@ -265,7 +264,6 @@
 ;;(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 (use-package treemacs
-  :ensure t
   :defer t
   ;;:init
   ;;(with-eval-after-load 'winum
